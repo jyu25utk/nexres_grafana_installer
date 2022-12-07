@@ -74,27 +74,27 @@ then
   sudo rm -rf "/var/lib/prometheus"
 fi
 
-if [ "/usr/local/bin/prometheus" ]
+if [ -f "/usr/local/bin/prometheus" ]
 then
   sudo rm "/usr/local/bin/prometheus"
 fi
 
-if [ "/usr/local/bin/promtool" ]
+if [ -f "/usr/local/bin/promtool" ]
 then
   sudo rm "/usr/local/bin/promtool"
 fi
 
-if [ "/etc/systemd/system/prometheus.service" ]
+if [ -f "/etc/systemd/system/prometheus.service" ]
 then
   sudo rm "/etc/systemd/system/prometheus.service"
 fi
 
-if [ "/usr/local/bin/node_exporter" ]
+if [ -f "/usr/local/bin/node_exporter" ]
 then
   sudo rm "/usr/local/bin/node_exporter"
 fi
 
-if [ "/etc/systemd/system/node_exporter.service" ]
+if [ -f "/etc/systemd/system/node_exporter.service" ]
 then
   sudo rm "/etc/systemd/system/node_exporter.service"
 fi
@@ -149,12 +149,12 @@ sudo systemctl enable node_exporter
 echo "configurate nexres as a system service"
 sudo cp -r "./start_nexres.sh" "/usr/local/bin"
 sudo chmod +x "/usr/local/bin/start_nexres.sh"
-if [ ! "/etc/rc.local" ]
+if [ ! -f "/etc/rc.local" ]
 then
   sudo cp -r "./rc.local" "/etc"
 fi
 sudo chmod +x "/etc/rc.local"
-if [ ! "/etc/systemd/system/rc-local.service" ]
+if [ ! -f "/etc/systemd/system/rc-local.service" ]
 then
  sudo cp -r "./rc-local.service" "/etc/systemd/system/"
 fi
